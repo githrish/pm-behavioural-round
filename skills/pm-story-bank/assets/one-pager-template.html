@@ -145,7 +145,7 @@ page("ov",`
    <div>${D.stories.map((s,i)=>`<div class="idx">${chip("S"+(i+1))}<div><b>${e(s.short||s.title)}</b> <span style="color:var(--ink3)">· page ${i+2}</span></div><span class="v">${e(s.number)}</span></div>`).join("")}</div></div>
  </div>
 </div>
-<div class="sec"><div class="sh">${ic("messages-square")}<h2>Questions that can come up</h2><span class="lab">Lenny's three types</span></div>
+<div class="sec"><div class="sh">${ic("messages-square")}<h2>Common questions</h2><span class="lab">Any company · Lenny's three types</span></div>
  <div class="qtype"><b>Pure</b><span class="pc">~70%</span><span>“Tell me about a time…” Tell the story in STAR++, from the angle shown.</span></div>
  <div class="pure">${O.pure.map(r=>`<div><b>${e(r.q)}</b>${chip(r.s)}<small>${e(r.angle)}</small></div>`).join("")}</div>
 </div>
