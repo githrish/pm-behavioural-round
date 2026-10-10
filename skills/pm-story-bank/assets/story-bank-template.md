@@ -1,6 +1,6 @@
-<!-- story-bank.md — hand-off file for the PM first-round prep series.
+<!-- story-bank.md: hand-off file for the PM first-round prep series.
      Keep these headings exactly; the role-tailoring and mock skills parse them. -->
-# Story Bank — <Full name>
+# Story Bank: <Full name>
 
 ## Profile
 - Current role:
@@ -11,8 +11,8 @@
 ## Thread
 <one line>
 
-## Tell Me About Yourself — Core
-### 60–90 second version
+## Tell Me About Yourself: Core
+### 60 to 90 second version
 <script; end with [COMPANY-SPECIFIC FUTURE SLOT] and the generic fallback line>
 ### ~2 minute version
 <script>
@@ -20,7 +20,7 @@
 - "<phrase>" → S1
 
 ## Why PM (switchers only)
-<30–45 s answer>
+<30 to 45 second answer>
 
 ## Ranked Story List
 | Rank | Story | When | Scope | Complexity | Recency | PM signal | Total | Competencies |
@@ -28,7 +28,7 @@
 
 ## Top Stories
 
-### S1 — <Headline>
+### S1: <Headline>
 - When / where:
 - Competencies:
 - Key metric:
@@ -39,19 +39,19 @@
   2.
   3.
 - **Result:**
-- **+ Learning:**
-- **+ Now I:**
+- **+ Learnings:**
+- **+ Future improvements:**
 - **30-second version:**
 - **Likely follow-ups:**
   - Q: … → A: …
 - **Delivery risk:**
 - **Raw details:**
 
-### S2 — <Headline>
-### S3 — <Headline>
+### S2: <Headline>
+### S3: <Headline>
 
 ## Backup Stories
-### B1 — <Title> (covers: <gap>)
+### B1: <Title> (covers: <gap>)
 <short STAR++>
 
 ## Question → Story Map

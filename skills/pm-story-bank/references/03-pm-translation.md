@@ -1,4 +1,4 @@
-# Step 4 — PM translation for people moving into PM
+# Step 4: PM translation for people moving into PM
 
 Interviewers for career switchers ask two silent questions: **"Have they already done PM work, even without the title?"** and **"Do they understand what a PM actually does?"** The stories must answer yes to both, honestly.
 
@@ -39,9 +39,9 @@ quota, pipeline (keep only as the business result), "closed", "managed the accou
 
 ## The "Why PM?" bridge
 
-Every switcher gets asked this, usually right after "Tell me about yourself". Write a 30–45 second answer with this structure:
+Every switcher gets asked this, usually right after "Tell me about yourself". Write a 30 to 45 second answer with this structure:
 1. **The pull:** the moment or pattern that made them want to own *what gets built*, not just sell, market or support it. Make it specific.
-2. **The proof:** 1–2 things they've already done that are PM work (from the stories), plus any deliberate prep (side project, course, internal PM shadowing).
+2. **The proof:** 1 or 2 things they've already done that are PM work (from the stories), plus any deliberate prep (side project, course, internal PM shadowing).
 3. **The edge:** what their background gives them that many PMs lack (customer intimacy from sales, distribution sense from GTM, funnel instinct from growth).
 
 Avoid: "I want to be the CEO of the product", "I'm tired of sales", or anything vague about "strategy".

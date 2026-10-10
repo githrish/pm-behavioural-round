@@ -1,4 +1,4 @@
-# Step 2 — Mine & rank stories
+# Step 2: Mine and rank stories
 
 ## 2a. Mine everything
 
@@ -13,7 +13,7 @@ Ask for these **one at a time** (failure first, then conflict, then pushing back
 
 ## 2b. Score
 
-Score each candidate 1–5:
+Score each candidate from 1 to 5:
 
 | Criterion | 5 looks like | 1 looks like |
 |---|---|---|
@@ -22,7 +22,7 @@ Score each candidate 1–5:
 | **Recency** | Last 2 years | 5+ years ago |
 | **PM signal** | Clearly shows a PM competency below, with the user's own judgment visible | Pure execution of someone else's plan |
 
-PM competencies to tag (1–3 per story):
+PM competencies to tag (1 to 3 per story):
 - **Product sense / customer insight:** found a real user problem, discovery, research, insight that changed direction
 - **Execution / delivery:** shipped something hard, managed scope, trade-offs, timelines
 - **Data & metrics:** defined success metrics, experiments, analysis that drove a decision
@@ -36,7 +36,7 @@ For people moving into PM, score **PM signal** after applying the translation le
 
 ## 2c. Recommend, then let the user pick
 
-Show a ranked table of the top 5–6:
+Show a ranked table of the top 5 or 6:
 
 | Rank | Story (working title) | When | Scope | Complexity | Recency | PM signal | Total | Competencies |
 |---|---|---|---|---|---|---|---|---|
@@ -46,10 +46,10 @@ Under it, recommend a **top 3** that together cover **different** competencies, 
 2. an **influence/conflict** story
 3. a **product sense or data-driven decision** story
 
-A **failure** story is very useful too. If it isn't among the top 3, it becomes a backup story in step 6.
+A failure story is useful too. If it isn't among the top 3, it becomes a backup story in step 6.
 
-Explain the choice in 2–3 lines, then ask: "Which 3 do you want to go deep on? You can swap any of mine." ⏸ Wait for their answer.
+Explain the choice in 2 or 3 lines, then ask: "Which 3 do you want to go deep on? You can swap any of mine." ⏸ Wait for their answer.
 
 **Founder, side-project and current-venture stories count.** If the user runs or ran their own product (a startup, a side project with real users, a freelance product), list each of its achievements as separate candidates and score them like any job. They are usually the most recent stories, show full ownership, and also feed the "why are you leaving / why go back to a job" answer.
 
-Sources: Erika Gemzer, "How to pass any first-round interview", Lenny's Newsletter (the "walk down memory lane" idea: 3–5 big, recent projects, judged on scope and complexity, from the last 2–4 years). The scoring table, PM competency tags and founder-story rule are additions.
+Sources: Erika Gemzer, "How to pass any first-round interview", Lenny's Newsletter (the "walk down memory lane" idea: 3 to 5 big, recent projects, judged on scope and complexity, from the last 2 to 4 years). The scoring table, PM competency tags and founder-story rule are additions.

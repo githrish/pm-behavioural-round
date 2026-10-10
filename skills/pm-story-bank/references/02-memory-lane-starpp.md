@@ -14,7 +14,7 @@ Don't interview from a blank page. Work on **one story at a time**:
    If the material covers most of these, ask fewer. Fold small confirmations, like "is it ₹10L or ₹1Cr?", into the same question as a related gap instead of spending a question on them.
 4. **Write it in full and show it.** Let the user correct everything in one reply, using the review question in the question tool.
 
-Usually that's 3–5 questions per story and about 15 for three stories. If a gap is still open after 5 questions, write the story without it and mark it as a gap rather than asking more.
+Usually that's 3 to 5 questions per story and about 15 for three stories. If a gap is still open after 5 questions, write the story without it and mark it as a gap rather than asking more.
 
 ## What interviewers score in a story
 
@@ -44,7 +44,7 @@ Record every raw detail in story-bank.md. Most of it won't fit in 2 minutes, but
 | Part | What goes here | Share of time |
 |---|---|---|
 | **Headline** | One line with the result and your role, said first | ~5% |
-| **Situation** | The stakes, in 1–2 sentences. Make the interviewer care about the user or the business. | ~10% |
+| **Situation** | The stakes, in 1 or 2 sentences. Make the interviewer care about the user or the business. | ~10% |
 | **Task** | What you were responsible for and the goal | ~5% |
 | **Action** | 3 things you did. One must be **the call you made and what you gave up**. One should show how you brought people along. | ~50% |
 | **Result** | Number, baseline and what it meant for the business | ~15% |

@@ -1,4 +1,4 @@
-# Step 6 — Behavioral coverage
+# Step 6: Behavioral coverage
 
 Goal: the user should never hear a common behavioral question and think "I have no story for that".
 
@@ -29,11 +29,11 @@ Output:
 
 ## 6b. Fill the gaps with backup stories
 
-Any question with no good story is a gap. Common gaps: **failure**, **conflict**, **saying no**, and for switchers, **working with engineering** and **prioritisation**. For each gap, find a smaller story (from the ranked list in step 2, or by asking) and write a **short STAR++** (~60–90 s; bullets are fine). Limit it to 2 backup stories, as the whole point is depth over breadth.
+Any question with no good story is a gap. Common gaps: **failure**, **conflict**, **saying no**, and for switchers, **working with engineering** and **prioritisation**. For each gap, find a smaller story (from the ranked list in step 2, or by asking) and write a short STAR++ (60 to 90 seconds; bullets are fine). Stop at 2 backup stories, because the point is depth over breadth.
 
 ## 6c. "My approach" answers (theoretical questions, ~20%)
 
-Write 3–4 of these. Pattern: **name 3 principles → one line on each → prove it with a 30-second example from a story.**
+Write 3 or 4 of these. Pattern: **name 3 principles → one line on each → prove it with a 30-second example from a story.**
 
 Pick the ones that fit the user's level:
 - How do you prioritise? (e.g., impact vs. effort against goals, user evidence, strategic fit, what we say no to)
@@ -50,7 +50,7 @@ These come up in most first rounds, and they don't depend on the company. Write 
 
 | Question | What they're checking | Beats | Time |
 |---|---|---|---|
-| **Why PM?** (switchers) | You know what the job really is and you've earned the interest | The moment you were pulled toward deciding *what* to build → 1–2 PM-type things you already did, one with a number → what you did about it (project, course, internal move) → the kind of PM you'll be | 60–90 s |
+| **Why PM?** (switchers) | You know what the job really is and you've earned the interest | The moment you were pulled toward deciding *what* to build → 1 or 2 PM-type things you already did, one with a number → what you did about it (project, course, internal move) → the kind of PM you'll be | 60 to 90 s |
 | **Why are you leaving?** | Are you moving toward something, or running from something? | Something honest and appreciative about the current job → the ceiling you've hit (scope, ownership, domain) → how the new role removes it | 30 s |
 | **Greatest strength** | Self-awareness | One PM strength → what it means in practice → one example with a result | 45 s |
 | **Weakness** | Are you coachable? | A real weakness that isn't core to PM work (over-committing, too blunt, slow to delegate) → a short time it hurt → what you're doing about it → recent proof it's improving | 60 s |
@@ -64,8 +64,8 @@ Don't:
 
 "Why this company?" and "Why this role?" change with each company, so the role-tailoring skill writes those.
 
-## Not in this skill
+## 6e. Situational questions (~10%): first moves only
 
-**Situational / hypothetical** questions ("Your launch is cancelled — what do you do?", "Usage dropped 20% overnight") depend on the company and product, so they're practised in the role-tailoring + mock skill. Tell the user that.
+Outline the first moves for 3 common hypotheticals, such as ramping up on a new team, a cancelled project, or a product that's crashing. Use Lenny's five moves: clarify, state assumptions, outline a plan, check in, summarise. Keep each to 2 or 3 sentences. Situational questions about the target company's own product (for example, "Usage dropped 20% overnight. What do you do?") depend on the company, so the role-tailoring and mock skill practises those. Tell the user that.
 
 Sources: Erika Gemzer, Lenny's Newsletter (the pure / theoretical / situational split and its rough shares, the principles-then-proof pattern for theoretical answers, the five moves for situational answers, the feedback example, and the practice questions). Motivation answers draw on Aakash Gupta (Product Growth), Exponent, and Cracking the PM Interview. The PM question list is a synthesis.

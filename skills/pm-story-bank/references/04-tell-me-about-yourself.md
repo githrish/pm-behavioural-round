@@ -15,7 +15,7 @@ This is the first question in almost every PM screen. It sets the tone, and the 
 |---|---|---|---|
 | 1 | **Headline** | One sentence: who you are as a professional and the thing you're best at. "I'm a ___ who ___." | 10 s |
 | 2 | **Now** | Current role and scope, plus one result with a number. | 25 s |
-| 3 | **How I got here** | 1–2 earlier moves told as one thread, not a timeline. Name the project you most want to be asked about, but don't tell it yet. That's your hook. | 40 s |
+| 3 | **How I got here** | 1 or 2 earlier moves told as one thread, not a timeline. Name the project you most want to be asked about, but don't tell it yet. That's your hook. | 40 s |
 | 4 | **Why PM** *(switchers only)* | The moment you wanted to own what gets built, plus proof you've already done PM-type work. | 20 s |
 | 5 | **Why here** | *Changes per company.* One thing about their product or problem that connects to your thread. | 15 s |
 | 6 | **Handoff** | "Happy to go deeper on the ___ project." Then stop talking. | 5 s |
@@ -33,13 +33,13 @@ Write three lengths from the same beats:
 2. **One thread.** Pick the idea that connects your moves: "I keep ending up where customers and revenue meet." Every beat should support it.
 3. **Plant hooks on purpose.** You decide what they ask next. Mention your strongest story by name in beat 3 and save the detail for later.
 4. **One or two numbers.** Ten numbers is a resume. One well-chosen number is proof.
-5. **Name the obvious doubt before they do.** If the resume shows no PM title, a gap or three jobs in four years, give it one honest line and turn it into a strength. Gupta's approach: find the 1–3 weaknesses a reviewer would spot and build your thread so each one reads as an asset.
+5. **Name the obvious doubt before they do.** If the resume shows no PM title, a gap or three jobs in four years, give it one honest line and turn it into a strength. Gupta's approach: find the 1 to 3 weaknesses a reviewer would spot and build your thread so each one reads as an asset.
 6. **Show your real scope.** Say what you owned, not just what your team delivered. This matters most for people coming from IT services or agencies, where titles are often inflated.
 7. **Stop at the handoff.** Ending cleanly signals confidence. Trailing off with "so yeah…" undercuts it.
 
 ## Same everywhere vs. changes per company
 
-About 70–80% stays the same: beats 1–4 and the thread. Per company, change:
+About 70 to 80% stays the same: beats 1 to 4 and the thread. Per company, change:
 - **Beat 5** (why here). The role-tailoring skill writes this.
 - **The order of proof in beat 3.** Lead with shipping for execution-heavy teams, user research for discovery teams, stakeholders and integrations for B2B or platform teams, and scrappiness for startups.
 - **Wording.** Use the job description's words where they're accurate.

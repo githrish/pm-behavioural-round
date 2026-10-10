@@ -42,7 +42,7 @@ Then say something like: *"Help me build my PM story bank. Here's my resume."*
 **The foundation** is Coach Erika Gemzer's guest post on Lenny's Newsletter, [How to pass any first-round interview (even in a terrible talent market)](https://www.lennysnewsletter.com/p/how-to-pass-any-first-round-interview) (July 2023). From it, these skills take:
 - MVIP (Minimum Viable Interview Prep), the idea of minimum prep that still works
 - the career story and having one decisive reason for wanting the role
-- "walking down memory lane": 3–5 big, recent projects instead of hundreds of scripted answers
+- "walking down memory lane": 3 to 5 big, recent projects instead of hundreds of scripted answers
 - STAR++: STAR plus Learnings and Future improvements
 - the pure / theoretical / situational question split and how to answer each
 - mirroring the job description's language, which comes in Skill 3
@@ -50,7 +50,7 @@ Then say something like: *"Help me build my PM story bank. Here's my resume."*
 The skills paraphrase the article; they don't reproduce it. Read the original. It's worth it.
 
 **Additions** that aren't in the article come from further research:
-- "Tell me about yourself": Aakash Gupta, Product Growth ([tell me about yourself](https://www.news.aakashg.com/p/go-from-410-to-1010-on-tell-me-about), [first-round questions](https://www.aakashg.com/first-round-interview-questions/)); Joel Schwartzberg in HBR, via [Cornell's summary](https://hecec.human.cornell.edu/?p=6907); [Exponent](https://www.tryexponent.com/blog/prepare-product-management-behavioral-interviews); [NextLevel Coach](https://www.nextlevel.coach/blog/tell-me-about-yourself-career-change)
+- "Tell me about yourself": Aakash Gupta, Product Growth ([tell me about yourself](https://www.news.aakashg.com/p/go-from-410-to-1010-on-tell-me-about), [first-round questions](https://www.aakashg.com/first-round-interview-questions/)); Joel Schwartzberg in HBR, via [Cornell's summary](https://hecec.human.cornell.edu/2021/11/02/6907/); [Exponent](https://www.aced.io/blog/prepare-product-management-behavioral-interviews); [NextLevel Coach](https://www.nextlevel.coach/blog/tell-me-about-yourself-career-change)
 - Stories and judgment: Jackie Bavaro, [Use PEARL instead of STAR](https://jackiebavaro.substack.com/p/use-pearl-instead-of-star-to-shine); [Amazon's interview guidance](https://amazon.jobs/en-gb/landing_pages/in-person-interview); Exponent's leadership and drive rubric; Lewis Lin, *Decode and Conquer*
 - Career switchers: [Product Leadership](https://www.productleadership.com/sales-to-product-manager/), [Earlywork](https://earlywork.substack.com/p/-from-marketing-to-product), [freeCodeCamp](https://www.freecodecamp.org/news/how-to-land-a-pm-job-without-pm-experience/)
 - Indian PM hiring: [Jobrise](https://jobrise.io/blog/flipkart-meesho-zomato-interview-india), [Razorpay on how it hires PMs](https://razorpay.com/unfiltered/how-we-hire-product-managers-and-what-to-expect-in-your-pm-interviews-at-razorpay/)
