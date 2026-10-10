@@ -51,3 +51,5 @@ A **failure** story is very useful too. If it isn't among the top 3, it becomes 
 Explain the choice in 2–3 lines, then ask: "Which 3 do you want to go deep on? You can swap any of mine." ⏸ Wait for their answer.
 
 **Founder, side-project and current-venture stories count.** If the user runs or ran their own product (a startup, a side project with real users, a freelance product), list each of its achievements as separate candidates and score them like any job. They are usually the most recent stories, show full ownership, and also feed the "why are you leaving / why go back to a job" answer.
+
+Sources: Erika Gemzer, "How to pass any first-round interview", Lenny's Newsletter (the "walk down memory lane" idea: 3–5 big, recent projects, judged on scope and complexity, from the last 2–4 years). The scoring table, PM competency tags and founder-story rule are additions.

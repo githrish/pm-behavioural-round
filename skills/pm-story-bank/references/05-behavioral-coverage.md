@@ -67,3 +67,5 @@ Don't:
 ## Not in this skill
 
 **Situational / hypothetical** questions ("Your launch is cancelled — what do you do?", "Usage dropped 20% overnight") depend on the company and product, so they're practised in the role-tailoring + mock skill. Tell the user that.
+
+Sources: Erika Gemzer, Lenny's Newsletter (the pure / theoretical / situational split and its rough shares, the principles-then-proof pattern for theoretical answers, the five moves for situational answers, the feedback example, and the practice questions). Motivation answers draw on Aakash Gupta (Product Growth), Exponent, and Cracking the PM Interview. The PM question list is a synthesis.

@@ -49,3 +49,5 @@ Avoid: "I want to be the CEO of the product", "I'm tired of sales", or anything 
 ## Gap check
 
 Switchers' stories often miss **prioritisation** and **working with engineering**. If no top-3 story shows them, flag it and look for a smaller backup story in step 6, even an internal tool, a side project or a cross-team initiative.
+
+Sources: Product Leadership, "From sales to product manager" (turning sales work into product insight); Earlywork, "From marketing to product"; Aakash Gupta, Product Growth (turning a perceived weakness into your angle); NextLevel Coach (career-change bridges); Jobrise (services-to-product framing for India). The translation table is a synthesis of these.
