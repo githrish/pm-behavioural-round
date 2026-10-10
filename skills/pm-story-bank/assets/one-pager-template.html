@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Story Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<!--
+  STORY BANK PACK (pm-story-bank skill): portrait A4. Page 1 = overview / question map; then one page per story.
+  Copy this file and replace ONLY the DATA object between DATA-START and DATA-END.
+  Word limits (keep each page to one A4 sheet):
+    intro[7].say 14–28 · reasons[3].a 22–32 · stories[3]: title ≤ 10, number ≤ 9 chars, numberLabel ≤ 9, land 12–20
+    overview.pure 10–14 rows {q ≤ 6 words, s: "S1".."S3"|"B1"|"B2"|"gap", angle ≤ 9 words}
+    overview.theory 3–4 {q, p: 3 principles ≤ 9 words each, proof: story id or "gap"}
+    overview.situational 3 {q, m: 30–45 words following clarify → assume → plan → check in → summarise}
+    pages[i] (one per story): short30 60–80 words; script 7 parts {part,time,text} ≈ 280 words total;
+      call {options: 3, chose, gaveUp}; numbers 4–5 {m, v, how}; followups 4–6 {q,a}; angles 4 {q,a}; watch: one line
+  Plain spoken words. If a column ends short, use fuller sentences rather than leaving a gap; never drop a section.
+-->
+<style>
+:root{
+  --paper:#fbfbfa;--ink:#111111;--ink2:#3f3f46;--ink3:#74747d;--hair:#e6e6e3;--hair2:#d6d6d2;
+  --blue:#2f6bed;--blue-d:#1f4fc4;--blue-t:#edf2fd;--warm-t:#fbf1e4;--warm:#93520a;--chip:#f1f1ee;--desk:#e8e8e5;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --desk:#2b2b29; } }
+:root[data-theme="dark"]{ --desk:#2b2b29; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--desk)}
+body{padding:24px 16px;color:var(--ink);font:400 7.35pt/1.43 "DM Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+::selection{background:var(--blue-t)}
+.toolbar{max-width:210mm;margin:0 auto 10px;display:flex;justify-content:flex-end}
+.toolbar button{font:500 12px "DM Sans",system-ui,sans-serif;border:1px solid #c9c9c4;background:#fff;color:#111;padding:7px 14px;border-radius:6px;cursor:pointer}
+.scroller{overflow-x:auto}
+.sheet{width:210mm;height:297mm;margin:0 auto;background:var(--paper);overflow:hidden;position:relative;
+  padding:9mm 12mm 8mm;display:flex;flex-direction:column;gap:3.4mm;
+  box-shadow:0 1px 2px rgba(0,0,0,.05),0 14px 34px -10px rgba(0,0,0,.22)}
+.sheet + .sheet{margin-top:18px}
+.sheet.sp,.sheet.ov{justify-content:space-between}
+.lab{font:500 6pt/1.6 "Geist Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.chip{font:500 6.2pt/1 "Geist Mono",monospace;font-style:normal;display:inline-flex;align-items:center;justify-content:center;
+  min-width:5.6mm;height:3.7mm;padding:0 1mm;border-radius:.8mm;background:var(--ink);color:#fff;flex:none}
+.chip.o{background:transparent;color:var(--ink2);box-shadow:inset 0 0 0 1px var(--hair2)}
+.chip.g{background:var(--warm-t);color:var(--warm)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:2.4mm;border-bottom:2px solid var(--ink)}
+.head h1{font:600 17pt/1 "DM Sans";letter-spacing:-.02em}
+.head p{font:500 6.2pt/1.6 "Geist Mono";letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);text-align:right} .head b{color:var(--ink);font-weight:500}
+.sec{display:flex;flex-direction:column}
+.sh{display:flex;align-items:center;gap:2.2mm;margin-bottom:2mm}
+.ic{width:5.6mm;height:5.6mm;border-radius:1.3mm;background:var(--blue-t);color:var(--blue-d);display:flex;align-items:center;justify-content:center;flex:none}
+.ic svg{width:3.4mm;height:3.4mm;stroke-width:2}
+.sh h2{font:600 10pt/1 "DM Sans";letter-spacing:-.01em}
+.sh .lab{margin-left:auto}
+.two{display:grid;grid-template-columns:1fr 1fr;column-gap:8mm}
+.rows > div{padding:1.2mm 0;border-bottom:1px solid var(--hair)} .rows{border-top:1px solid var(--hair)}
+/* intro */
+.tl{display:grid;grid-template-columns:8.5mm 5mm 1fr;row-gap:1.6mm}
+.tl .t{font:500 6.6pt/1.6 "Geist Mono";color:var(--blue-d)}
+.tl .d{position:relative}
+.tl .d:before{content:"";position:absolute;left:1.5mm;top:1mm;width:2mm;height:2mm;border-radius:50%;background:var(--blue)}
+.tl .d:after{content:"";position:absolute;left:2.45mm;top:3.4mm;bottom:-2.2mm;width:1px;background:var(--hair2)}
+.tl .d.last:after{display:none}
+.tl .d.pc:before{background:var(--paper);box-shadow:inset 0 0 0 1px var(--blue)}
+.tl b{font-weight:600;margin-right:1.2mm}
+.tl p{color:var(--ink2)} .tl .pcl{font:500 5.6pt "Geist Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-left:1.2mm}
+/* reasons + index */
+.mo{display:grid;grid-template-columns:5.6mm 1fr;column-gap:2.4mm;padding:1.2mm 0;border-bottom:1px solid var(--hair)}
+.mo:first-child{border-top:1px solid var(--hair)}
+.mo .ic{background:var(--chip);color:var(--ink2)} .mo b{display:block;font-weight:600} .mo p{color:var(--ink2)}
+.idx{display:grid;grid-template-columns:auto 1fr auto;column-gap:2.4mm;align-items:center;padding:.8mm 0;border-bottom:1px solid var(--hair)}
+.idx:first-child{border-top:1px solid var(--hair)}
+.idx b{font-weight:600} .idx span.v{font:600 9pt "DM Sans";color:var(--blue-d)} .idx small{display:block;color:var(--ink3)}
+/* question map */
+.qtype{display:flex;align-items:baseline;gap:2mm;margin:0 0 1.4mm}
+.qtype b{font:600 8.4pt "DM Sans"} .qtype .pc{font:500 6.2pt "Geist Mono";color:var(--blue-d)} .qtype span{color:var(--ink3)}
+.pure{display:grid;grid-template-columns:1fr 1fr;column-gap:8mm;border-top:1px solid var(--hair)}
+.pure div{display:grid;grid-template-columns:1fr auto;column-gap:2mm;align-items:start;padding:.9mm 0;border-bottom:1px solid var(--hair)}
+.pure b{font-weight:500} .pure small{grid-column:1;color:var(--ink3);font-size:6.8pt} .pure .chip{grid-row:1/3;grid-column:2;margin-top:.3mm}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:1.2mm 1.6mm;margin-bottom:1.6mm;color:var(--ink2)} .legend span{margin-right:2.4mm}
+.th{display:grid;grid-template-columns:1fr 1fr;gap:2.4mm 4mm}
+.th > div{background:#f3f3f0;border-radius:1.4mm;padding:2.2mm 2.6mm;display:flex;flex-direction:column}
+.th .q{display:flex;justify-content:space-between;align-items:flex-start;gap:2mm;font-weight:600;margin-bottom:.8mm}
+.th ol{padding-left:3.4mm;color:var(--ink2)} .th li::marker{font:500 6.2pt "Geist Mono";color:var(--ink3)}
+.si > div{display:grid;grid-template-columns:48mm 1fr;column-gap:5mm;padding:1.25mm 0;border-bottom:1px solid var(--hair)}
+.si{border-top:1px solid var(--hair)} .si b{font-weight:600} .si p{color:var(--ink2)}
+.pgn{position:absolute;right:12mm;bottom:5mm;font:500 6pt "Geist Mono";color:var(--ink3);letter-spacing:.08em}
+.foot{font:400 6.2pt "Geist Mono";color:var(--ink3)}
+/* story pages */
+.st-top{display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:8mm;padding-bottom:2.4mm;border-bottom:2px solid var(--ink)}
+.st-top .k{display:flex;align-items:center;gap:2mm;margin-bottom:1.4mm}
+.st-top h1{font:600 15pt/1.15 "DM Sans";letter-spacing:-.02em;text-wrap:balance}
+.st-top .use{margin-top:1.2mm;color:var(--ink2)} .st-top .use .lab{margin-right:1.2mm}
+.big{text-align:right} .big b{display:block;font:600 22pt/1 "DM Sans";letter-spacing:-.025em;color:var(--blue-d)} .big span{font-size:7pt;color:var(--ink3)}
+.script{display:grid;grid-template-columns:20mm 1fr;border-top:1px solid var(--hair)}
+.script > div{padding:1.2mm 0;border-bottom:1px solid var(--hair)}
+.script .pl{display:flex;flex-direction:column;gap:.2mm} .script .pl .t{font:500 6.4pt "Geist Mono";color:var(--blue-d)}
+.script .tx{font-size:7.9pt;line-height:1.47} .script .hl{font-weight:600}
+.box{background:var(--blue-t);border-radius:1.4mm;padding:2.2mm 2.6mm} .box p{font-size:7.6pt;line-height:1.47}
+.land{margin-top:2.2mm;display:flex;gap:1.6mm;align-items:flex-start;font-weight:500}
+.land svg{width:3mm;height:3mm;color:var(--blue-d);flex:none;margin-top:.3mm}
+.call ul{padding-left:3.2mm} .call li{margin-bottom:.5mm;color:var(--ink2)}
+.call .cg{display:grid;grid-template-columns:13mm 1fr;row-gap:.8mm;margin-top:1.4mm;padding-top:1.4mm;border-top:1px solid var(--hair)}
+.call .cg b{font:500 6pt "Geist Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);padding-top:.4mm}
+.nums{display:grid;grid-template-columns:1fr auto;border-top:1px solid var(--hair)}
+.nums > div{padding:1mm 0;border-bottom:1px solid var(--hair)}
+.nums .v{font:600 8.4pt "DM Sans";color:var(--blue-d);text-align:right;padding-left:3mm}
+.nums .m b{font-weight:500} .nums .m span{display:block;color:var(--ink3);font-size:6.8pt}
+.warn{background:var(--warm-t);color:#6b3a06;border-radius:1.2mm;padding:1.6mm 2.2mm;margin-top:2.4mm} .warn .lab{color:var(--warm);margin-right:1.2mm}
+.ang b{font-weight:600} .ang p{color:var(--ink2)}
+.qa{display:grid;grid-template-columns:1fr 1fr;column-gap:8mm;border-top:1px solid var(--hair)}
+.qa div{padding:1.3mm 0;border-bottom:1px solid var(--hair)} .qa b{display:block;font-weight:600} .qa p{color:var(--ink2)}
+@page{size:A4 portrait;margin:0}
+@media print{html,body{background:#fff;padding:0}.toolbar{display:none}.scroller{overflow:visible}.sheet{box-shadow:none;margin:0;break-after:page}.sheet + .sheet{margin-top:0}}
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="window.print()">Print / Save as PDF</button></div>
+<div class="scroller" id="pages"></div>
+<script>
+/*DATA-START*/
+window.DATA = window.DATA || null;
+/*DATA-END*/
+</script>
+<script>
+const D=window.DATA, e=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ic=n=>`<span class="ic"><i data-lucide="${n}"></i></span>`;
+const chip=s=>`<i class="chip ${s==="gap"?"g":String(s).startsWith("B")?"o":""}">${s==="gap"?"Find":e(s)}</i>`;
+const N=D.stories.length+1, O=D.overview||{pure:[],theory:[],situational:[]};
+const page=(cls,html,n)=>{const m=document.createElement("main");m.className="sheet "+cls;m.innerHTML=html+`<span class="pgn">${n} / ${N}</span>`;document.getElementById("pages").appendChild(m);};
+document.title=`Story Bank · ${D.name}`;
+
+// ---------- page 1: overview / question map ----------
+page("ov",`
+<header class="head"><h1>${e(D.name)}</h1><p><b>${e(D.role)}</b><br>${e(D.track)} · ${e(D.updated)}</p></header>
+<div class="two">
+ <div class="sec"><div class="sh">${ic("user-round")}<h2>Tell me about yourself</h2><span class="lab">2 min · in order</span></div>
+  <div class="tl">${D.intro.map((b,i)=>`<span class="t">${e(b.time)}</span><span class="d ${b.perCompany?"pc":""} ${i===D.intro.length-1?"last":""}"></span><p><b>${e(b.beat)}</b>${b.perCompany?`<span class="pcl" style="margin:0 1.2mm 0 0">per company</span>`:""}${e(b.say)}</p>`).join("")}</div></div>
+ <div style="display:flex;flex-direction:column;gap:4mm">
+  <div class="sec"><div class="sh">${ic("compass")}<h2>Your reasons</h2><span class="lab">Asked right after</span></div>
+   <div>${D.reasons.map(m=>`<div class="mo">${ic(m.icon||"circle")}<div><b>${e(m.q)}</b><p>${e(m.a)}</p></div></div>`).join("")}</div></div>
+  <div class="sec"><div class="sh">${ic("book-open")}<h2>Your stories</h2><span class="lab">One page each</span></div>
+   <div>${D.stories.map((s,i)=>`<div class="idx">${chip("S"+(i+1))}<div><b>${e(s.short||s.title)}</b> <span style="color:var(--ink3)">· page ${i+2}</span></div><span class="v">${e(s.number)}</span></div>`).join("")}</div></div>
+ </div>
+</div>
+<div class="sec"><div class="sh">${ic("messages-square")}<h2>Questions that can come up</h2><span class="lab">Lenny's three types</span></div>
+ <div class="qtype"><b>Pure</b><span class="pc">~70%</span><span>“Tell me about a time…” Tell the story in STAR++, from the angle shown.</span></div>
+ <div class="pure">${O.pure.map(r=>`<div><b>${e(r.q)}</b>${chip(r.s)}<small>${e(r.angle)}</small></div>`).join("")}</div>
+</div>
+<div class="sec">
+ <div class="qtype"><b>Theoretical</b><span class="pc">~20%</span><span>“How do you…?” Name the principles, then prove them with a short story.</span></div>
+ <div class="th">${O.theory.map(t=>`<div><div class="q"><span>${e(t.q)}</span>${chip(t.proof)}</div><ol>${t.p.map(x=>`<li>${e(x)}</li>`).join("")}</ol></div>`).join("")}</div>
+</div>
+<div class="sec">
+ <div class="qtype"><b>Situational</b><span class="pc">~10%</span><span>“What would you do if…?” Clarify, state assumptions, plan, check in, summarise.</span></div>
+ <div class="si">${O.situational.map(t=>`<div><b>${e(t.q)}</b><p>${e(t.m)}</p></div>`).join("")}</div>
+</div>
+<p class="foot">STAR++ = Situation, Task, Action, Result, + Learnings, + Future improvements (Erika Gemzer, Lenny's Newsletter). “Find” = no story yet.</p>`,1);
+
+// ---------- story pages ----------
+(D.pages||[]).forEach((pg,i)=>{const s=D.stories[i]; if(!s) return; const id="S"+(i+1);
+ const qs=[...new Set((O.pure||[]).filter(q=>q.s===id).map(q=>q.q))].join(" · ");
+ page("sp",`
+ <header class="st-top"><div><div class="k">${chip(id)}<span class="lab">Story ${i+1} of ${D.stories.length} · about 2 minutes</span></div><h1>${e(s.title)}</h1>
+  ${qs?`<p class="use"><span class="lab">Tell it for</span>${e(qs)}</p>`:""}</div>
+  <div class="big"><b>${e(s.number)}</b><span>${e(s.numberLabel)}</span></div></header>
+ <div class="sec"><div class="sh">${ic("mic")}<h2>Say it like this</h2><span class="lab">STAR++ · times are cumulative</span></div>
+  <div class="script">${pg.script.map(r=>`<div class="pl"><span class="lab">${e(r.part)}</span><span class="t">${e(r.time)}</span></div><div class="tx ${r.part==="Result"||r.part==="Headline"?"hl":""}">${e(r.text)}</div>`).join("")}</div></div>
+ <div class="two">
+  <div style="display:flex;flex-direction:column;gap:4mm">
+   <div class="sec"><div class="sh">${ic("timer")}<h2>30-second version</h2></div><div class="box"><p>${e(pg.short30)}</p><p class="land"><i data-lucide="quote"></i>${e(s.land)}</p></div></div>
+   <div class="sec call"><div class="sh">${ic("git-branch")}<h2>The call you made</h2></div><ul>${pg.call.options.map(o=>`<li>${e(o)}</li>`).join("")}</ul>
+    <div class="cg"><b>Chose</b><span>${e(pg.call.chose)}</span><b>Gave up</b><span>${e(pg.call.gaveUp)}</span></div></div>
+   <p class="warn" style="margin-top:0"><span class="lab">Watch out</span>${e(pg.watch)}</p>
+  </div>
+  <div class="sec"><div class="sh">${ic("hash")}<h2>Numbers to know</h2></div><div class="nums">${pg.numbers.map(n=>`<div class="m"><b>${e(n.m)}</b><span>${e(n.how)}</span></div><div class="v">${e(n.v)}</div>`).join("")}</div>
+   ${pg.angles&&pg.angles.length?`<div class="sh" style="margin-top:4mm">${ic("shuffle")}<h2>Other questions it answers</h2></div><div class="rows ang">${pg.angles.map(g=>`<div><b>${e(g.q)}</b><p>${e(g.a)}</p></div>`).join("")}</div>`:""}</div>
+ </div>
+ <div class="sec"><div class="sh">${ic("messages-square")}<h2>Likely follow-ups</h2></div><div class="qa">${pg.followups.map(f=>`<div><b>${e(f.q)}</b><p>${e(f.a)}</p></div>`).join("")}</div></div>
+`, i+2);
+});
+try{lucide.createIcons()}catch(_){}
+</script>
+</body>
+</html>
