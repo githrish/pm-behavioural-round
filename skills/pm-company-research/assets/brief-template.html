@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<!--
+  COMPANY BRIEF (pm-company-research skill): ONE portrait A4 page, delivered as HTML (print-ready).
+  Don't edit this file by hand. Write a data JSON and run scripts/build.py, which injects it
+  between DATA-START and DATA-END, checks the text and measures the fit (add --pdf to also print a PDF).
+  Layout: numbered sections in reading order. Each has a left rail (number, title, one-line takeaway)
+  and its content on the right, so the page reads top to bottom like a briefing.
+  Citations: keep [n] in the text fields (n = a sources[].n, for the build's checks and the .md).
+  The page hides them and shows no sources list; every link lives in research-<company>.md.
+  Set "showRefs": true to show [n] as small linked numbers instead.
+  Mark estimates with "~". Write "Not public" for unknown values. Word limits that keep it to ONE page:
+    oneLiner up to 15 words · kpis 6 {v up to 10 chars, l up to 6 words incl. "as of"}
+    take {business, leadership, funding, product, market, sentiment, questions}: one takeaway each, up to 12 words
+    about.what 18 to 26 · about.model 3 items up to 7 (one line each) · about.problem up to 18
+    leaders 3 {role up to 4 words, bg up to 12, said up to 12}
+    funding.rounds 3 to 4 (latest first) {d, r, amt, lead up to 4 words} · funding.total up to 12 · funding.runway 18 to 28
+    news 4 to 5 {d "Mon YY", t up to 12}, shown under the runway read
+    product.funnel 5 {step up to 3 words, note up to 8, money: true on steps that make money}
+    product.numbers 4 {m up to 6} · product.persona up to 16 · product.notice 3 to 4, up to 16 each
+    competitors 4 {name, pos up to 8, vs up to 10}
+    sentiment.ratings 6 {p, v, of, n up to 3 words} · users and employees: good 1 + bad 2, each up to 8
+    signals 2 to 4, up to 5 words · questions 6 {q up to 18, who, why (.md only), listen up to 8}
+    closing {q up to 24, why up to 12}
+    FILLERS, only when the build reports free space: sentiment.quote (up to 14) · talking (up to 3, each up to 20) · theyMayAsk (up to 3, each up to 12)
+  Fewer words is fine if the build reports no free space; more words means overflow.
+-->
+<style>
+:root{
+  --paper:#fbfbfa;--ink:#111111;--ink2:#3f3f46;--ink3:#74747d;--hair:#e6e6e3;--hair2:#d6d6d2;
+  --blue:#2f6bed;--blue-d:#1f4fc4;--blue-t:#edf2fd;--warm-t:#fbf1e4;--warm:#93520a;--chip:#f1f1ee;--desk:#e8e8e5;
+  --good:#1d6b45;--bad:#93520a;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --desk:#2b2b29; } }
+:root[data-theme="dark"]{ --desk:#2b2b29; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--desk)}
+body{padding:24px 16px;color:var(--ink);font:400 6.5pt/1.36 "DM Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+::selection{background:var(--blue-t)}
+a{color:inherit;text-decoration:none}
+p{text-wrap:pretty}
+.toolbar{max-width:210mm;margin:0 auto 10px;display:flex;justify-content:flex-end}
+.toolbar button{font:500 12px "DM Sans",system-ui,sans-serif;border:1px solid #c9c9c4;background:#fff;color:#111;padding:7px 14px;border-radius:6px;cursor:pointer}
+.scroller{overflow-x:auto}
+.sheet{width:210mm;height:297mm;margin:0 auto;background:var(--paper);overflow:hidden;position:relative;
+  padding:8mm 10mm 6mm;display:flex;flex-direction:column;
+  box-shadow:0 1px 2px rgba(0,0,0,.05),0 14px 34px -10px rgba(0,0,0,.22)}
+.lab{font:500 5.6pt/1.6 "Geist Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.chip{font:500 5.6pt/1 "Geist Mono",monospace;font-style:normal;display:inline-flex;align-items:center;justify-content:center;
+  min-width:5.4mm;height:3.3mm;padding:0 .9mm;border-radius:.8mm;background:var(--ink);color:#fff;flex:none;letter-spacing:.04em}
+.chip.o{background:transparent;color:var(--ink2);box-shadow:inset 0 0 0 1px var(--hair2)}
+.chip.b{background:var(--blue-t);color:var(--blue-d)}
+sup.ref{font:500 4.9pt/0 "Geist Mono",monospace;color:var(--blue-d);margin-left:.25mm;vertical-align:super}
+sup.ref a{color:var(--blue-d)}
+/* header */
+.head{display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:8mm;padding-bottom:2mm;border-bottom:2px solid var(--ink)}
+.head h1{font:600 18pt/1 "DM Sans",system-ui,sans-serif;letter-spacing:-.025em;margin-top:.8mm}
+.head .one{margin-top:1.1mm;font-size:7.4pt;color:var(--ink2)}
+.head .meta{font:500 5.8pt/1.65 "Geist Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);text-align:right}
+.head .meta b{color:var(--ink);font-weight:500}
+.kpis{display:grid;border-bottom:1px solid var(--ink)}
+.kpis > div{padding:1.6mm 2mm 1.5mm;border-left:1px solid var(--hair)} .kpis > div:first-child{border-left:0;padding-left:0}
+.kpis b{display:block;font:600 10.5pt/1.05 "DM Sans",system-ui,sans-serif;letter-spacing:-.02em;color:var(--blue-d)}
+.kpis b.np{color:var(--ink3);font-size:8pt;font-weight:500}
+.kpis span{display:block;margin-top:.5mm;font-size:6pt;color:var(--ink3);line-height:1.3}
+/* sections: rail + body */
+.band{display:grid;grid-template-columns:29mm 1fr;column-gap:5mm;padding:1.7mm 0 1.8mm;border-bottom:1px solid var(--hair)}
+.rail{display:flex;flex-direction:column;gap:.8mm;padding-right:1mm}
+.rail .n{display:flex;align-items:center;gap:1.4mm}
+.rail .n span{font:500 5.8pt "Geist Mono",ui-monospace,monospace;color:var(--blue-d);letter-spacing:.06em}
+.rail .ic{width:4.4mm;height:4.4mm;border-radius:1mm;background:var(--blue-t);color:var(--blue-d);display:flex;align-items:center;justify-content:center;flex:none}
+.rail .ic svg{width:2.8mm;height:2.8mm;stroke-width:2}
+.rail h2{font:600 8.6pt/1.15 "DM Sans",system-ui,sans-serif;letter-spacing:-.01em}
+.rail .take{font-size:6.5pt;line-height:1.35;color:var(--ink);font-weight:500;border-left:2px solid var(--blue);padding-left:1.6mm;margin-top:.4mm}
+.rail .take.w{border-left-color:var(--warm)}
+.rail .meta{font:500 5.3pt/1.5 "Geist Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.body{min-width:0;display:flex;flex-direction:column;gap:1.6mm}
+.row{display:grid;column-gap:5mm;align-items:stretch}
+.col{display:flex;flex-direction:column;gap:1.4mm;min-width:0}
+.sl{font:500 5.5pt/1.5 "Geist Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:.4mm}
+.mute{color:var(--ink2)} .faint{color:var(--ink3)}
+.dots{list-style:none} .dots li{position:relative;padding-left:2.6mm;margin-top:.45mm;color:var(--ink2)} .dots li:first-child{margin-top:0}
+.dots li:before{content:"";position:absolute;left:.4mm;top:1.2mm;width:1.1mm;height:1.1mm;border-radius:50%;background:var(--blue)}
+.box{background:var(--blue-t);border-radius:1.1mm;padding:1.3mm 1.9mm}
+.box.w{background:var(--warm-t)}
+.box .sl{display:block;color:var(--blue-d);margin-bottom:.2mm} .box.w .sl{color:var(--warm)}
+/* leaders */
+.ppl{display:grid;grid-template-columns:repeat(3,1fr);column-gap:5mm}
+.ppl > div{border-top:1px solid var(--hair2);padding-top:1mm}
+.ppl b{display:block;font-weight:600;font-size:6.9pt} .ppl .r{display:block;font:500 5.4pt/1.6 "Geist Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.ppl p{color:var(--ink2);margin-top:.3mm}
+.ppl .said{display:flex;gap:1.1mm;margin-top:.6mm;color:var(--ink);font-style:italic}
+.ppl .said svg{width:2.3mm;height:2.3mm;flex:none;color:var(--blue-d);margin-top:.3mm}
+/* tables */
+.tbl{display:grid;border-top:1px solid var(--hair2)}
+.tbl > div{padding:.55mm 2mm .55mm 0;border-bottom:1px solid var(--hair);min-width:0}
+.tbl .th{font:500 5.3pt/1.5 "Geist Mono",ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);padding-top:.4mm;padding-bottom:.4mm}
+.tbl .v{font-weight:600;color:var(--blue-d)} .tbl .n{font-weight:600}
+/* news */
+.news{display:grid;grid-template-columns:1fr 1fr;column-gap:5mm;border-top:1px solid var(--hair2)}
+.news > div{display:grid;grid-template-columns:10mm 1fr;padding:.55mm 0;border-bottom:1px solid var(--hair)}
+.news .d{font:500 5.7pt/1.75 "Geist Mono",ui-monospace,monospace;color:var(--blue-d)}
+/* funnel */
+.funnel{display:grid}
+.funnel > div{background:var(--chip);padding:1mm 3.8mm 1.1mm 4mm;
+  clip-path:polygon(0 0,calc(100% - 2.4mm) 0,100% 50%,calc(100% - 2.4mm) 100%,0 100%,2.4mm 50%)}
+.funnel > div:first-child{padding-left:2mm;clip-path:polygon(0 0,calc(100% - 2.4mm) 0,100% 50%,calc(100% - 2.4mm) 100%,0 100%)}
+.funnel > div:nth-child(odd){background:#ecece8}
+.funnel > div.m{background:var(--blue-t)}
+.funnel .k{font:500 5.2pt/1.4 "Geist Mono",ui-monospace,monospace;letter-spacing:.06em;color:var(--blue-d)}
+.funnel b{display:block;font-weight:600;font-size:6.8pt;line-height:1.2}
+.funnel p{color:var(--ink2);font-size:5.9pt;line-height:1.3;margin-top:.2mm}
+.nums{display:grid;grid-template-columns:1fr auto;border-top:1px solid var(--hair2)}
+.nums > div{padding:.5mm 0;border-bottom:1px solid var(--hair)}
+.nums .v{font:600 7.4pt "DM Sans",system-ui,sans-serif;color:var(--blue-d);text-align:right;padding-left:3mm}
+/* sentiment */
+.rt{display:grid;grid-template-columns:repeat(6,1fr);column-gap:1.4mm}
+.rt > div{background:var(--chip);border-radius:1mm;padding:1mm 1.4mm}
+.rt b{display:block;font:600 9pt/1.1 "DM Sans",system-ui,sans-serif;letter-spacing:-.02em;color:var(--blue-d)} .rt b small{font:500 5.3pt "Geist Mono",ui-monospace,monospace;color:var(--ink3);margin-left:.3mm}
+.rt .p{display:block;font:500 5.2pt/1.5 "Geist Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.rt em{display:block;font-style:normal;font-size:5.6pt;color:var(--ink3);line-height:1.25}
+.pm{list-style:none} .pm li{display:grid;grid-template-columns:2.6mm 1fr;padding:.3mm 0;color:var(--ink2)}
+.pm li:before{font:600 7pt/1.1 "DM Sans",system-ui,sans-serif} .pm li.g:before{content:"+";color:var(--good)} .pm li.x:before{content:"\2212";color:var(--bad)}
+.quote{display:flex;gap:1.1mm;font-style:italic;color:var(--ink2)}
+.quote svg{width:2.3mm;height:2.3mm;flex:none;color:var(--blue-d);margin-top:.3mm}
+/* questions */
+.sig{display:flex;flex-wrap:wrap;align-items:center;gap:1mm 1.2mm}
+.sig .sl{margin:0 .6mm 0 0} .sig span.s{background:var(--chip);border-radius:.8mm;padding:.25mm 1.3mm;font-weight:500}
+.legend{display:grid;grid-template-columns:1fr;gap:.7mm;align-items:center;color:var(--ink3);margin-top:1.2mm;font-size:5.8pt}
+.legend span{display:flex;align-items:center;gap:.8mm}
+.qs{counter-reset:q;display:grid;grid-template-columns:1fr 1fr;column-gap:5mm;border-top:1px solid var(--hair2)}
+.qs > div{display:grid;grid-template-columns:4.2mm 1fr auto;column-gap:1.6mm;padding:.8mm 0;border-bottom:1px solid var(--hair)}
+.qs > div:before{counter-increment:q;content:counter(q,decimal-leading-zero);font:500 5.8pt/1.7 "Geist Mono",ui-monospace,monospace;color:var(--blue-d)}
+.qs b{font-weight:600;font-size:6.7pt;line-height:1.34} .qs .why{grid-column:2;color:var(--ink3);margin-top:.2mm}
+.qs .why i{font-style:normal;color:var(--ink2)} .qs .chip{grid-row:1/3;grid-column:3;margin-top:.4mm}
+.close{background:var(--ink);color:#fff;border-radius:1.1mm;padding:1.4mm 2.2mm;display:grid;grid-template-columns:27mm 1fr;column-gap:3mm;align-items:start}
+.close .sl{color:#a9a9b0;margin:0;padding-top:.3mm} .close b{font-weight:600;font-size:7pt;line-height:1.34;display:block}
+.close p{color:#c9c9cf;margin-top:.2mm}
+.foot{margin-top:auto;padding-top:1.6mm;border-top:2px solid var(--ink);display:flex;justify-content:space-between;gap:4mm;font:400 5.4pt/1.5 "Geist Mono",ui-monospace,monospace;color:var(--ink3)}
+.foot b{color:var(--ink2);font-weight:500}
+.fitdbg .col,.fitdbg .rail{outline:1px dashed #e44}
+@page{size:A4 portrait;margin:0}
+@media print{html,body{background:#fff;padding:0}.toolbar{display:none}.scroller{overflow:visible}.sheet{box-shadow:none;margin:0}}
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="window.print()">Print / Save as PDF</button></div>
+<div class="scroller" id="pages"></div>
+<script>
+/*DATA-START*/
+window.DATA = window.DATA || null;
+/*DATA-END*/
+</script>
+<script>
+const D=window.DATA, A=a=>Array.isArray(a)?a:[], TK=D.take||{};
+const e=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const SRC=Object.fromEntries(A(D.sources).map(s=>[String(s.n),s]));
+// [n] citations: hidden on the page by default (links live in the .md); shown as linked superscripts if showRefs is true
+const t=s=>e(s).replace(/\s*\[(\d+(?:\s*,\s*\d+)*)\]/g,(m,g)=>D.showRefs?`<sup class="ref">${g.split(/\s*,\s*/).map(n=>SRC[n]?`<a href="${e(SRC[n].url)}">${n}</a>`:n).join(",")}</sup>`:"");
+const WHO={R:"Recruiter",HM:"Hiring manager",P:"Peer",F:"Founder"};
+const who=w=>`<i class="chip ${w==="HM"?"":w==="F"?"b":"o"}">${e(w)}</i>`;
+const L=(k,d)=>D.layout?.[k]||d;
+let N=0;
+const band=(key,icon,title,body,opt={})=>{N++;const take=TK[key]??opt.take;return `<section class="band" data-band="${key}">
+ <div class="rail"><div class="n"><span class="ic"><i data-lucide="${icon}"></i></span><span>${String(N).padStart(2,"0")}</span></div><h2>${e(title)}</h2>
+  ${opt.meta?`<span class="meta">${e(opt.meta)}</span>`:""}${take?`<p class="take ${opt.warm?"w":""}">${t(take)}</p>`:""}${opt.after||""}</div>
+ <div class="body">${body}</div></section>`;};
+const row=(name,cols,tpl)=>`<div class="row" data-row="${name}" style="grid-template-columns:${tpl}">${cols.map(c=>`<div class="col">${c}</div>`).join("")}</div>`;
+const ul=a=>`<ul class="dots">${A(a).map(m=>`<li>${t(m)}</li>`).join("")}</ul>`;
+document.title=`Company Brief · ${D.company}`;
+const K=A(D.kpis), F=D.funding||{}, P=D.product||{}, S=D.sentiment||{}, B=D.about||{};
+
+const html=`
+<header class="head"><div><span class="lab">Company research · first round prep</span><h1>${e(D.company)}</h1><p class="one">${t(D.oneLiner)}</p></div>
+ <div class="meta"><b>${e(D.role)}</b><br>${e(D.stage)}${D.meeting?` · ${e(D.meeting)}`:""}<br>Researched ${e(D.date)}</div></header>
+<div class="kpis" style="grid-template-columns:repeat(${K.length},1fr)">${K.map(k=>`<div><b class="${/^not public$/i.test(k.v)?"np":""}">${e(k.v)}</b><span>${t(k.l)}</span></div>`).join("")}</div>
+
+${band("business","building-2","The business",row("business",[
+  `<div><div class="sl">What they do</div><p>${t(B.what)}</p></div>`,
+  `<p class="box"><span class="sl">The core problem</span>${t(B.problem)}</p>`,
+  `<div><div class="sl">How it makes money</div>${ul(B.model)}</div>`],L("business","1.1fr 0.9fr 1fr")))}
+
+${band("leadership","users","Leadership",`<div class="ppl">${A(D.leaders).map(l=>`<div><b>${e(l.name)}</b><span class="r">${e(l.role)}</span><p>${t(l.bg)}</p>${l.said?`<p class="said"><i data-lucide="quote"></i><span>${t(l.said)}</span></p>`:""}</div>`).join("")}</div>`)}
+
+${band("funding","landmark","Funding and runway",`${row("funding",[
+  `<div class="tbl" style="grid-template-columns:auto auto auto 1fr"><div class="th">When</div><div class="th">Round</div><div class="th">Amount</div><div class="th">Led by</div>
+    ${A(F.rounds).map(r=>`<div class="faint">${e(r.d)}</div><div class="n">${t(r.r)}</div><div class="v">${e(r.amt)}</div><div class="mute">${t(r.lead)}</div>`).join("")}</div>
+`,
+  `<p class="box w"><span class="sl">Runway read · ${F.runwayEst===false?"from filings":"estimate"}</span>${t(F.runway)}</p>
+   ${F.total?`<p class="mute">${t(F.total)}</p>`:""}`],L("funding","1.1fr 1fr"))}
+  <div><div class="sl">Recent news</div><div class="news">${A(D.news).map(n=>`<div><span class="d">${e(n.d)}</span><span>${t(n.t)}</span></div>`).join("")}</div></div>`,{meta:F.asOf,warm:true})}
+
+${band("product","smartphone","The product",`
+  <div class="funnel" style="grid-template-columns:repeat(${A(P.funnel).length},1fr)">${A(P.funnel).map((f,i)=>`<div class="${f.money?"m":""}"><span class="k">${String(i+1).padStart(2,"0")}${f.money?" · makes money":""}</span><b>${e(f.step)}</b><p>${t(f.note)}</p></div>`).join("")}</div>
+  ${row("product",[
+   `<div><div class="sl">Numbers</div><div class="nums">${A(P.numbers).map(n=>`<div><b style="font-weight:500">${t(n.m)}</b></div><div class="v">${e(n.v)}</div>`).join("")}</div></div>`,
+   `<div><div class="sl">What you'd notice using it</div>${ul(P.notice)}</div>
+    ${P.persona?`<p class="box"><span class="sl">Who it's for</span>${t(P.persona)}</p>`:""}`],L("product","1fr 1.25fr"))}`,{meta:P.method?`Seen via ${P.method}`:""})}
+
+${band("market","swords","Competitors",`<div class="tbl" style="grid-template-columns:auto 1fr 1.15fr"><div class="th">Who</div><div class="th">How they position</div><div class="th">Versus ${e(D.company)}</div>
+  ${A(D.competitors).map(c=>`<div class="n">${e(c.name)}</div><div class="mute">${t(c.pos)}</div><div>${t(c.vs)}</div>`).join("")}</div>`,{take:D.positioning})}
+
+${band("sentiment","star","Reviews and sentiment",`
+  <div class="rt">${A(S.ratings).map(r=>`<div><span class="p">${e(r.p)}</span><b>${e(r.v)}${r.of?`<small>/${e(r.of)}</small>`:""}</b><em>${t(r.n)}</em></div>`).join("")}</div>
+  ${row("sentiment",[
+   `<div><div class="sl">Users say</div><ul class="pm">${A(S.users?.good).map(x=>`<li class="g"><span>${t(x)}</span></li>`).join("")}${A(S.users?.bad).map(x=>`<li class="x"><span>${t(x)}</span></li>`).join("")}</ul></div>`,
+   `<div><div class="sl">Employees say</div><ul class="pm">${A(S.employees?.good).map(x=>`<li class="g"><span>${t(x)}</span></li>`).join("")}${A(S.employees?.bad).map(x=>`<li class="x"><span>${t(x)}</span></li>`).join("")}</ul></div>`],L("sentiment","1fr 1fr"))}
+  ${S.quote?`<p class="quote"><i data-lucide="quote"></i><span>${t(S.quote)}</span></p>`:""}`,{meta:S.asOf})}
+
+${band("questions","circle-help","Questions to ask",`
+  ${A(D.signals).length?`<div class="sig"><span class="sl">You want to find out</span>${A(D.signals).map(s=>`<span class="s">${e(s)}</span>`).join("")}</div>`:""}
+  <div class="qs">${A(D.questions).map(q=>`<div><b>${t(q.q)}</b>${who(q.who)}<p class="why"><i>Listen for:</i> ${t(q.listen)}</p></div>`).join("")}</div>
+  <div class="close"><span class="sl">Closing question · ask everyone</span><div><b>${t(D.closing?.q)}</b><p>${t(D.closing?.why)}</p></div></div>`,{meta:"5 to 7 minutes",after:`<div class="legend">${Object.entries(WHO).map(([k,v])=>`<span>${who(k)} ${v}</span>`).join("")}</div>`})}
+
+${(A(D.talking).length||A(D.theyMayAsk).length)?band("extras","lightbulb","Your angles",row("extras",[
+  A(D.talking).length?`<div><div class="sl">Talking points: your why here</div>${ul(D.talking)}</div>`:"",
+  A(D.theyMayAsk).length?`<div><div class="sl">They may ask you</div>${ul(D.theyMayAsk)}</div>`:""],L("extras","1.2fr 1fr"))):""}
+
+<footer class="foot"><span>Method: Erika Gemzer, "How to pass any first-round interview", Lenny's Newsletter (2023).</span><span><b>Sources and full detail: research-${e(String(D.company).toLowerCase().replace(/[^a-z0-9]+/g,"-"))}.md</b> · ~ = estimate</span></footer>`;
+
+const m=document.createElement("main");m.className="sheet";m.innerHTML=html;document.getElementById("pages").appendChild(m);
+try{lucide.createIcons()}catch(_){}
+if(location.hash==="#fit")document.body.classList.add("fitdbg");
+
+// Fit report for scripts/build.py: free space above the footer, overflow, and per row (and per rail vs body)
+// how far each column falls short of the tallest.
+const MM=96/25.4;
+function measure(){
+  const foot=m.querySelector(".foot"), kids=[...m.children].filter(c=>c!==foot);
+  const bottom=Math.max(...kids.map(c=>c.getBoundingClientRect().bottom));
+  const free=(foot.getBoundingClientRect().top-bottom)/MM;
+  const over=(m.scrollHeight-m.clientHeight)/MM;
+  const h=el=>{const r=el.getBoundingClientRect();return Math.max(r.top,...[...el.children].map(x=>x.getBoundingClientRect().bottom))-r.top;};
+  const rows=[...m.querySelectorAll(".row")].map(r=>{const cols=[...r.children].map(h);const top=Math.max(...cols);return {row:r.dataset.row,shortBy:cols.map(x=>+((top-x)/MM).toFixed(1))};});
+  const rails=[...m.querySelectorAll(".band")].map(b=>({band:b.dataset.band,railTallerBy:+((h(b.querySelector(".rail"))-h(b.querySelector(".body")))/MM).toFixed(1)})).filter(x=>x.railTallerBy>0.5);
+  document.body.dataset.fit=JSON.stringify({freeMm:+free.toFixed(1),overflowMm:+Math.max(over,0).toFixed(1),rows,rails});
+}
+(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(measure,150));
+</script>
+</body>
+</html>
